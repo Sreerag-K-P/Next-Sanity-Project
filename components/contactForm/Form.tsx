@@ -25,15 +25,16 @@ export const Form = () => {
   const [messageState, setMessageState] = useState("");
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    console.log(values);
     const errors = validate(values);
     if (errors && Object.keys(errors).length > 0) {
       return setErrors(errors);
     }
     setErrors({});
-    console.log("values", values);
+
     setLoading(true);
     axios
-      .post("api/mail", {
+      .post("api/hello", {
         name: values.name,
         email: values.email,
         message: values.message,

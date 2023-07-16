@@ -15,9 +15,9 @@ export default async function handler(
       email,
       message,
     }: { name: string; email: string; message: string } = req.body;
-    console.log({ name, email, message });
-    const msg = `Name: ${name}\r\n Email: ${email}\r\n Message: ${message}`;
 
+    const msg = `Name: ${name}\r\n Email: ${email}\r\n Message: ${message}`;
+    console.log(msg);
     const data = {
       to: "sreeragkjnivas4324602@gmail.com",
       from: "sreeragkjnivas4324602@gmail.com",

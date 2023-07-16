@@ -1,11 +1,11 @@
 // components/contactForm/Input.tsx
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  id: string
-  name: string
-  label: string
-  placeholder: string
-  error?: boolean
-  errorMessage?: string
+  id: string;
+  name: string;
+  label: string;
+  placeholder: string;
+  error?: boolean;
+  errorMessage?: string;
 }
 const Input = ({
   id,
@@ -13,7 +13,7 @@ const Input = ({
   label,
   placeholder,
   error = false,
-  errorMessage = '',
+  errorMessage = "",
   ...props
 }: InputProps) => {
   return (
@@ -31,6 +31,6 @@ const Input = ({
       />
       {error && <p className="mt-2 text-sm text-pink-600">*{errorMessage}</p>}
     </div>
-  )
-}
-export default Input
+  );
+};
+export default Input;
