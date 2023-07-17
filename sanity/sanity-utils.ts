@@ -1,6 +1,7 @@
 import { createClient, groq } from "next-sanity";
 import { Project } from "@/types/Project";
 import { Page } from "@/types/Page";
+import { Career } from "@/types/Career";
 import clientConfig from "./config/client-config";
 export async function getProjects(): Promise<Project[]> {
   return createClient(clientConfig).fetch(
@@ -49,6 +50,35 @@ export async function getPage(slug: string): Promise<Page> {
       title,
       "slug":slug.current,
       content
+    }`,
+    { slug }
+  );
+}
+
+export async function getCareers(): Promise<Career[]> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "career"]{
+      _id,
+      _createdAt,
+      title,
+      "slug":slug.current,
+      location,
+      department
+    }`
+  );
+}
+export async function getCareer(slug: string): Promise<Career> {
+  return createClient(clientConfig).fetch(
+    groq`*[_type == "career" && slug.current == $slug ][0]{
+      _id,
+      _createdAt,
+      title,
+      "slug":slug.current,
+      location,
+      department,
+      qualification,
+      aboutthejob,
+      responsibilities,
     }`,
     { slug }
   );

@@ -1,14 +1,14 @@
-import ApplyJob from '@/components/joinOurTeam/ApplyJob'
-import { getCareer } from '@/sanity/sanity-utils'
+import ApplyJob from "@/components/joinOurTeam/ApplyJob";
+import { getCareer } from "@/sanity/sanity-utils";
 
 type Props = {
-  params: { career: string }
-}
+  params: { career: string };
+};
 
 export default async function Offer({ params }: Props) {
-  const slug = params.career
+  const slug = params.career;
 
-  const career = await getCareer(slug)
+  const career = await getCareer(slug);
 
   return (
     <div className=" max-w-screen-xl mx-auto py-24">
@@ -25,5 +25,5 @@ export default async function Offer({ params }: Props) {
         <ApplyJob />
       </div>
     </div>
-  )
+  );
 }
