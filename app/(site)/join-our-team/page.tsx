@@ -1,8 +1,8 @@
-import { getCareers } from '@/sanity/sanity-utils'
-import Link from 'next/link'
-
+import { getCareers } from "@/sanity/sanity-utils";
+import Link from "next/link";
+export const dynamic = "auto";
 export default async function JoinOurTeam() {
-  const careers = await getCareers()
+  const careers = await getCareers();
   return (
     <div className="bg-secondary">
       <div className=" max-w-screen-xl px-12 mx-auto py-12">
@@ -21,5 +21,5 @@ export default async function JoinOurTeam() {
         </ol>
       </div>
     </div>
-  )
+  );
 }
