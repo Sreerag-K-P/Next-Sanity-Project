@@ -38,7 +38,8 @@ export async function getPages(): Promise<Page[]> {
       _createdAt,
       title,
       "slug":slug.current
-    }`
+    }`,
+    { next: { revalidate: 5 } }
   );
 }
 
