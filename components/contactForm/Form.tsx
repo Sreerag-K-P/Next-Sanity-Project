@@ -33,22 +33,30 @@ export const Form = () => {
     setErrors({});
 
     setLoading(true);
-    axios
-      .post("api/hello", {
+    fetch("api/hello", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
         name: values.name,
         email: values.email,
         message: values.message,
-      })
+      }),
+    })
       .then((res) => {
         if (res.status === 200) {
           setValues({ name: "", email: "", message: "" });
           setLoading(false);
           setSuccess(true);
-          setMessageState(res.data.message);
+          return res.json();
         } else {
           setLoading(false);
-          setMessageState(res.data.message);
+          throw new Error(res.statusText);
         }
+      })
+      .then((data) => {
+        setMessageState(data.message);
       })
       .catch((err) => {
         setLoading(false);
