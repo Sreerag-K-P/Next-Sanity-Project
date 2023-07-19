@@ -13,7 +13,8 @@ export async function getProjects(): Promise<Project[]> {
         "image": image.asset->url,
         url,
         content
-      }`
+      }`,
+    { next: { tags: ["project"] } }
   );
 }
 export async function getProject(slug: string): Promise<Project> {
@@ -82,6 +83,7 @@ export async function getCareer(slug: string): Promise<Career> {
       aboutthejob,
       responsibilities,
     }`,
+
     { slug }
   );
 }
