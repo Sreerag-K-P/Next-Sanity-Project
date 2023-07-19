@@ -39,7 +39,7 @@ export async function getPages(): Promise<Page[]> {
       title,
       "slug":slug.current
     }`,
-    { next: { revalidate: 5 } }
+    { next: { tags: ["page"] } }
   );
 }
 
