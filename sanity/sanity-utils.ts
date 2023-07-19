@@ -3,7 +3,9 @@ import { Project } from "@/types/Project";
 import { Page } from "@/types/Page";
 import { Career } from "@/types/Career";
 import clientConfig from "./config/client-config";
-export async function getProjects(): Promise<Project[]> {
+import { addNextRequestConfig } from "@/utils/nextUtils";
+export async function getProjects(params?: string): Promise<Project[]> {
+  addNextRequestConfig({ tags: ["Project", "name"] });
   return createClient(clientConfig).fetch(
     groq`*[_type == "project"]{
         _id,
