@@ -65,7 +65,8 @@ export async function getCareers(): Promise<Career[]> {
       "slug":slug.current,
       location,
       department
-    }`
+    }`,
+    { next: { tags: ["career"] } }
   );
 }
 export async function getCareer(slug: string): Promise<Career> {
