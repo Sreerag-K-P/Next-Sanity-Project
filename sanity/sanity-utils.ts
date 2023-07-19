@@ -39,8 +39,7 @@ export async function getPages(): Promise<Page[]> {
       _createdAt,
       title,
       "slug":slug.current
-    }`,
-    { next: { tags: ["page"] } }
+    }`
   );
 }
 
@@ -66,8 +65,7 @@ export async function getCareers(): Promise<Career[]> {
       "slug":slug.current,
       location,
       department
-    }`,
-    { next: { tags: ["career"] } }
+    }`
   );
 }
 export async function getCareer(slug: string): Promise<Career> {
