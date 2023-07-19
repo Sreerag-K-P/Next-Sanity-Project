@@ -14,7 +14,7 @@ export async function getProjects(): Promise<Project[]> {
         url,
         content
       }`,
-    { next: { tags: ["name"] } }
+    { next: { tags: ["project.name"] } }
   );
 }
 export async function getProject(slug: string): Promise<Project> {
