@@ -2,7 +2,5 @@ import { NextRequest, NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 
 export async function GET(request: NextRequest) {
-  const tag = request.nextUrl.searchParams.get("/");
-
-  return NextResponse.json(tag);
+  return NextResponse.json(request);
 }
