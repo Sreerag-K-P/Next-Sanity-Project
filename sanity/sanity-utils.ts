@@ -15,8 +15,7 @@ export async function getProjects(): Promise<Project[]> {
         "image": image.asset->url,
         url,
         content
-      }`,
-    { next: { revalidate: 1 } }
+      }`
   );
 }
 export async function getProject(slug: string): Promise<Project> {
@@ -41,7 +40,8 @@ export async function getPages(): Promise<Page[]> {
       _createdAt,
       title,
       "slug":slug.current
-    }`
+    }`,
+    { next: { tag: [`title`] } }
   );
 }
 
