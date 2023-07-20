@@ -3,7 +3,7 @@ import { Project } from "@/types/Project";
 import { Page } from "@/types/Page";
 import { Career } from "@/types/Career";
 import clientConfig from "./config/client-config";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 
 export async function getProjects(): Promise<Project[]> {
   return createClient(clientConfig).fetch(
@@ -16,9 +16,7 @@ export async function getProjects(): Promise<Project[]> {
         url,
         content
       }`,
-    {
-      next: { revalidate: 1 },
-    }
+    { next: { revalidate: 1 } }
   );
 }
 export async function getProject(slug: string): Promise<Project> {
