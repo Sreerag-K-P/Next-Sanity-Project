@@ -4,6 +4,7 @@ import { Page } from "@/types/Page";
 import { Career } from "@/types/Career";
 import clientConfig from "./config/client-config";
 import { revalidatePath } from "next/cache";
+import page from "@/app/(site)/[slug]/page";
 
 export async function getProjects(): Promise<Project[]> {
   return createClient(clientConfig).fetch(
@@ -41,7 +42,7 @@ export async function getPages(): Promise<Page[]> {
       title,
       "slug":slug.current
     }`,
-    { next: { tag: [`page`] } }
+    { next: { tag: [page] } }
   );
 }
 
