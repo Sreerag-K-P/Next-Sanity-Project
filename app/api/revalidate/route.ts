@@ -6,8 +6,9 @@ import {} from "sanity";
 export const runtime = "edge";
 
 export async function GET(request: NextRequest) {
-  const path = request.nextUrl.searchParams.get("path") || "";
+  // const path = request.nextUrl.searchParams.get("path") || "";
+  const res = request.json();
 
-  revalidatePath(path);
-  return NextResponse.json({ revalidated: true, now: Date.now(), request });
+  // revalidatePath(path);
+  return NextResponse.json({ revalidated: true, now: Date.now(), res });
 }
