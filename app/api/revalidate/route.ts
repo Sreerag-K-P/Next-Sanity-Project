@@ -6,7 +6,7 @@ import {} from "sanity";
 export const runtime = "edge";
 
 export async function GET(request: NextRequest) {
-  const path = request.nextUrl.searchParams.get("*[_type == project]") || " ";
+  const path = request.nextUrl.searchParams.get("/page") || " ";
 
   revalidatePath(path);
   return NextResponse.json({ revalidated: true, now: Date.now(), request });
