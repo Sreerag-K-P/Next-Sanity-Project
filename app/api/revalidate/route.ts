@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import { revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
+
+export const runtime = "edge";
 
 export async function GET(request: NextRequest) {
-  return NextResponse.json(request);
+  const path = request.nextUrl.searchParams.get("/career") || "/";
+  revalidatePath(path);
+  return NextResponse.json({ revalidated: true, now: Date.now(), path });
 }
