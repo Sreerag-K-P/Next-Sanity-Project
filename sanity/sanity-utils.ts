@@ -3,9 +3,8 @@ import { Project } from "@/types/Project";
 import { Page } from "@/types/Page";
 import { Career } from "@/types/Career";
 import clientConfig from "./config/client-config";
-import { addNextRequestConfig } from "@/utils/nextUtils";
-export async function getProjects(params?: string): Promise<Project[]> {
-  addNextRequestConfig({ tags: ["Project", "name"] });
+
+export async function getProjects(): Promise<Project[]> {
   return createClient(clientConfig).fetch(
     groq`*[_type == "project"]{
         _id,
@@ -16,7 +15,7 @@ export async function getProjects(params?: string): Promise<Project[]> {
         url,
         content
       }`,
-    { next: { tags: ["project.name"] } }
+    { next: { tags: [groq`*[_type == "project"]{name}`] } }
   );
 }
 export async function getProject(slug: string): Promise<Project> {
