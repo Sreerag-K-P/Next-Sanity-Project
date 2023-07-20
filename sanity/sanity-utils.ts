@@ -42,7 +42,7 @@ export async function getPages(): Promise<Page[]> {
       title,
       "slug":slug.current
     }`,
-    { next: { tag: [page] } }
+    { next: { tag: [page.name] } }
   );
 }
 
