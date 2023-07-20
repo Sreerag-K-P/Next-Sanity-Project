@@ -1,15 +1,10 @@
-import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 
-export async function GET(req: NextRequest) {
-  const body = await req.text();
+export async function GET(request: NextRequest) {
+  const body = await request.text();
 
-  const path = JSON.parse(body);
-
-  revalidatePath("/");
-  revalidatePath(`/${path.slug}`);
-
-  return NextResponse.json({
-    success: true,
-  });
+  const path = request.headers.get("path") || "/";
+  revalidatePath(path);
+  return NextResponse.json({ revalidated: true, now: Date.now() });
 }
