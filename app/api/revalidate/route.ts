@@ -5,6 +5,6 @@ export const runtime = "edge";
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-
-  return NextResponse.json({ revalidated: true, now: Date.now(), body });
+  alert(body.path);
+  return NextResponse.json({ revalidated: true, now: Date.now() });
 }
