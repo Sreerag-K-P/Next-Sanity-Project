@@ -4,8 +4,9 @@ import { revalidatePath } from "next/cache";
 export const runtime = "edge";
 
 export async function GET(request: NextRequest) {
-  console.log(request);
-  const path = request.nextUrl.searchParams.get("/project") || "/";
+  const path = request.nextUrl.searchParams.get("/") || "/";
   revalidatePath(path);
-  return NextResponse.json({ revalidated: true, now: Date.now(), request });
+  const path2 = request.nextUrl.searchParams.get("/join-our-team") || "/";
+  revalidatePath(path2);
+  return NextResponse.json({ revalidated: true, now: Date.now() });
 }
