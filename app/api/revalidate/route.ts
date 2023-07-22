@@ -4,7 +4,7 @@ import { revalidatePath } from "next/cache";
 export const runtime = "edge";
 
 export async function POST(request: NextRequest) {
-  const body = await request.json();
-  alert(body.path);
-  return NextResponse.json({ revalidated: true, now: Date.now() });
+  const body = await request.text();
+
+  return NextResponse.json({ revalidated: true, now: Date.now(), body });
 }
